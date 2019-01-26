@@ -42,30 +42,16 @@ public class PlayerMovement : MonoBehaviour
         if (!dead)
         {
             // Movement
-            Vector3 right = transform.right;
+            Vector3 right = cam.transform.right;
             right.y = 0;
             right.Normalize();
-            Vector3 forward = transform.forward;
+            Vector3 forward = cam.transform.forward;
             forward.y = 0;
             forward.Normalize();
 
-<<<<<<< HEAD
             Vector3 movement = right * Input.GetAxis("Horizontal") + forward * Input.GetAxis("Vertical");
 
-            rb.MovePosition(movement * Speed * Time.deltaTime + transform.position);
-=======
-        // Movement
-        Vector3 right = cam.transform.right;
-        right.y = 0;
-        right.Normalize();
-        Vector3 forward = cam.transform.forward;
-        forward.y = 0;
-        forward.Normalize();
-
-        Vector3 movement = right * Input.GetAxis("Horizontal") + forward * Input.GetAxis("Vertical");
-
-        rb.MovePosition(movement * Speed * Time.fixedDeltaTime + transform.position);
->>>>>>> master
+            rb.MovePosition(movement * Speed * Time.fixedDeltaTime + transform.position);
 
 
             // Reset Jump Counter if player hits the floor
@@ -79,7 +65,6 @@ public class PlayerMovement : MonoBehaviour
             // Check if player is trying to jump
             if (!float.Equals(Input.GetAxis("Jump"), 0f))
             {
-<<<<<<< HEAD
                 if (jumpCounter < numAllowedJumps && !jumped)
                 {
                     jumped = true;
@@ -87,6 +72,10 @@ public class PlayerMovement : MonoBehaviour
                     Vector3 curVel = rb.velocity;
                     curVel.x = 0;
                     curVel.z = 0;
+                    if (curVel.y > 0)
+                    {
+                        curVel.y = 0;
+                    }
                     rb.AddForce(Vector3.up * JumpHeight + -curVel, ForceMode.VelocityChange);
                     Debug.Log("JUMPING");
                 }
@@ -94,41 +83,18 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 jumped = false;
-=======
-                jumped = true;
-                jumpCounter += 1;
-                Vector3 curVel = rb.velocity;
-                curVel.x = 0;
-                curVel.z = 0;
-                if (curVel.y > 0)
-                {
-                    curVel.y = 0;
-                }
-                rb.AddForce(Vector3.up * JumpHeight + -curVel, ForceMode.VelocityChange);
-                Debug.Log("JUMPING");
->>>>>>> master
             }
 
             // -- The following code tweaks the physics to make the jump feel better -- //
 
-<<<<<<< HEAD
             // Enhance the fall speed
             if (rb.velocity.y < 0)
-                rb.velocity += Physics.gravity * fallMultiplier * Time.deltaTime;
+                rb.velocity += Physics.gravity * fallMultiplier * Time.fixedDeltaTime;
 
             // Fall faster if player isn't holding the jump button
             if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
-                rb.velocity += Physics.gravity * jumpDragMultiplier * Time.deltaTime;
+                rb.velocity += Physics.gravity * jumpDragMultiplier * Time.fixedDeltaTime;
         }
-=======
-        // Enhance the fall speed
-        if(rb.velocity.y < 0) 
-            rb.velocity += Physics.gravity * fallMultiplier * Time.fixedDeltaTime;
-
-        // Fall faster if player isn't holding the jump button
-        if(rb.velocity.y > 0 && !Input.GetButton("Jump"))
-            rb.velocity += Physics.gravity * jumpDragMultiplier * Time.fixedDeltaTime;
->>>>>>> master
     }
 
     public void ChangeJumpHeight(float factor)
