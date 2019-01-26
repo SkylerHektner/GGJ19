@@ -25,7 +25,7 @@ public class PlayerLook : MonoBehaviour
 
     Quaternion originalRotation;
 
-    void Update()
+    void FixedUpdate()
     {
         rotAverageY = 0f;
         rotAverageX = 0f;

@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
 
         // Movement
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 movement = right * Input.GetAxis("Horizontal") + forward * Input.GetAxis("Vertical");
 
-        rb.MovePosition(movement * Speed * Time.deltaTime + transform.position);
+        rb.MovePosition(movement * Speed * Time.fixedDeltaTime + transform.position);
 
 
         // Reset Jump Counter if player hits the floor
@@ -68,10 +68,10 @@ public class PlayerMovement : MonoBehaviour
 
         // Enhance the fall speed
         if(rb.velocity.y < 0) 
-            rb.velocity += Physics.gravity * fallMultiplier * Time.deltaTime;
+            rb.velocity += Physics.gravity * fallMultiplier * Time.fixedDeltaTime;
 
         // Fall faster if player isn't holding the jump button
         if(rb.velocity.y > 0 && !Input.GetButton("Jump"))
-            rb.velocity += Physics.gravity * jumpDragMultiplier * Time.deltaTime;
+            rb.velocity += Physics.gravity * jumpDragMultiplier * Time.fixedDeltaTime;
     }
 }
