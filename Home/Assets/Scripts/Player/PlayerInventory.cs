@@ -21,6 +21,11 @@ public class PlayerInventory : MonoBehaviour
         collectedItems.Add(key);
     }
 
+    public void RemoveFromInventory(string key)
+    {
+        collectedItems.Remove(key);
+    }
+
     public bool HasItem(string key)
     {
         if(collectedItems.Contains(key))
