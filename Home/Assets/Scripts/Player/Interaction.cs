@@ -43,7 +43,7 @@ public class Interaction : MonoBehaviour
         else
         {
             Vector3 targetPos = cam.transform.position + cam.transform.forward * offsetMagnitude;
-            curCandidate.rb.AddForce((targetPos - curCandidate.transform.position) * 10f, ForceMode.Force);
+            curCandidate.rb.velocity = (targetPos - curCandidate.transform.position) * 20f;
             if (Input.GetButtonDown("Interact"))
             {
                 carrying = false;

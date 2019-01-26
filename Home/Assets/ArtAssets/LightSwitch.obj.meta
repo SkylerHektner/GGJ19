@@ -14,6 +14,7 @@ ModelImporter:
     2100000: pPlane1Mat
     2100002: LightSwitch_pPlane1Mat
     2100004: LightSwitch1_initialShadingGroup
+    2100006: LightSwitch1_pPlane1Mat
     2300000: pPlane1
     2300002: LightSwitch:pPlane1
     2300004: LightSwitch1:pPlane1
@@ -24,6 +25,16 @@ ModelImporter:
     4300002: LightSwitch:pPlane1
     4300004: LightSwitch1:pPlane1
   externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LightSwitch1_initialShadingGroup
+    second: {fileID: 2100000, guid: bf702dbe763a7e44eaafff0ef73827f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LightSwitch1_pPlane1Mat
+    second: {fileID: 2100000, guid: bf702dbe763a7e44eaafff0ef73827f9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
