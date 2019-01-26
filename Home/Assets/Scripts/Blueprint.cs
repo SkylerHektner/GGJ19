@@ -24,13 +24,20 @@ public class Blueprint : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             PlayerInventory inventory = player.GetComponent<PlayerInventory>();
-            foreach (BlueprintItem bit in itemsToBeShown)
+            if (itemsToBeShown.Count == 0)
             {
-                bit.ShowItem();
-                inventory.RemoveFromInventory(bit.itemName);
+                interactionCanvas.SetActive(false);
             }
-            itemsToBeShown.Clear();
-            interactionCanvas.SetActive(false);
+            else
+            {
+                itemsToBeShown[0].ShowItem();
+                inventory.RemoveFromInventory(itemsToBeShown[0].itemName);
+                itemsToBeShown.Remove(itemsToBeShown[0]);
+                if (itemsToBeShown.Count == 0)
+                {
+                    interactionCanvas.SetActive(false);
+                }
+            }
         }
     }
 

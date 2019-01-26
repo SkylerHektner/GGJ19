@@ -296,6 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blueprintMaterial: {fileID: 2100000, guid: 946fe8351c172e04da595a6da30f41b3, type: 2}
   normalMaterial: {fileID: 2100000, guid: f0b6541c31d9d1d47985388286a89687, type: 2}
+  highlightMaterial: {fileID: 2100000, guid: 06f7b7e7a3e95e047b51385640aac1b6, type: 2}
   itemName: b
 --- !u!1 &1159549014
 GameObject:
@@ -395,7 +396,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1334668572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,6 +581,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blueprintMaterial: {fileID: 2100000, guid: 946fe8351c172e04da595a6da30f41b3, type: 2}
   normalMaterial: {fileID: 2100000, guid: f0b6541c31d9d1d47985388286a89687, type: 2}
+  highlightMaterial: {fileID: 2100000, guid: 06f7b7e7a3e95e047b51385640aac1b6, type: 2}
   itemName: d
 --- !u!1001 &1391190664
 PrefabInstance:
@@ -752,6 +754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blueprintMaterial: {fileID: 2100000, guid: 946fe8351c172e04da595a6da30f41b3, type: 2}
   normalMaterial: {fileID: 2100000, guid: f0b6541c31d9d1d47985388286a89687, type: 2}
+  highlightMaterial: {fileID: 2100000, guid: 06f7b7e7a3e95e047b51385640aac1b6, type: 2}
   itemName: a
 --- !u!1 &1494177929
 GameObject:
@@ -845,6 +848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blueprintMaterial: {fileID: 2100000, guid: 946fe8351c172e04da595a6da30f41b3, type: 2}
   normalMaterial: {fileID: 2100000, guid: f0b6541c31d9d1d47985388286a89687, type: 2}
+  highlightMaterial: {fileID: 2100000, guid: 06f7b7e7a3e95e047b51385640aac1b6, type: 2}
   itemName: c
 --- !u!1 &1871787575
 GameObject:
