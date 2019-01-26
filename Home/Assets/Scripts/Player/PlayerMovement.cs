@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public int numAllowedJumps = 2;
     public static PlayerMovement instance;
 
+    private bool dead = false;
+
     private Rigidbody rb;
 
     private float OriginalJumpHeight;
@@ -36,56 +38,58 @@ public class PlayerMovement : MonoBehaviour
 
     public void Update()
     {
-
-        // Movement
-        Vector3 right = transform.right;
-        right.y = 0;
-        right.Normalize();
-        Vector3 forward = transform.forward;
-        forward.y = 0;
-        forward.Normalize();
-
-        Vector3 movement = right * Input.GetAxis("Horizontal") + forward * Input.GetAxis("Vertical");
-
-        rb.MovePosition(movement * Speed * Time.deltaTime + transform.position);
-
-
-        // Reset Jump Counter if player hits the floor
-        RaycastHit hitInfo;
-        if (jumpCounter != 0 && Physics.Raycast(transform.position, Vector3.down, out hitInfo) &&
-            (hitInfo.point - transform.position).magnitude < minJumpThresh)
+        if (!dead)
         {
-            jumpCounter = 0;
-        }
+            // Movement
+            Vector3 right = transform.right;
+            right.y = 0;
+            right.Normalize();
+            Vector3 forward = transform.forward;
+            forward.y = 0;
+            forward.Normalize();
 
-        // Check if player is trying to jump
-        if (!float.Equals(Input.GetAxis("Jump"), 0f))
-        {
-            if (jumpCounter < numAllowedJumps && !jumped)
+            Vector3 movement = right * Input.GetAxis("Horizontal") + forward * Input.GetAxis("Vertical");
+
+            rb.MovePosition(movement * Speed * Time.deltaTime + transform.position);
+
+
+            // Reset Jump Counter if player hits the floor
+            RaycastHit hitInfo;
+            if (jumpCounter != 0 && Physics.Raycast(transform.position, Vector3.down, out hitInfo) &&
+                (hitInfo.point - transform.position).magnitude < minJumpThresh)
             {
-                jumped = true;
-                jumpCounter += 1;
-                Vector3 curVel = rb.velocity;
-                curVel.x = 0;
-                curVel.z = 0;
-                rb.AddForce(Vector3.up * JumpHeight + -curVel, ForceMode.VelocityChange);
-                Debug.Log("JUMPING");
+                jumpCounter = 0;
             }
+
+            // Check if player is trying to jump
+            if (!float.Equals(Input.GetAxis("Jump"), 0f))
+            {
+                if (jumpCounter < numAllowedJumps && !jumped)
+                {
+                    jumped = true;
+                    jumpCounter += 1;
+                    Vector3 curVel = rb.velocity;
+                    curVel.x = 0;
+                    curVel.z = 0;
+                    rb.AddForce(Vector3.up * JumpHeight + -curVel, ForceMode.VelocityChange);
+                    Debug.Log("JUMPING");
+                }
+            }
+            else
+            {
+                jumped = false;
+            }
+
+            // -- The following code tweaks the physics to make the jump feel better -- //
+
+            // Enhance the fall speed
+            if (rb.velocity.y < 0)
+                rb.velocity += Physics.gravity * fallMultiplier * Time.deltaTime;
+
+            // Fall faster if player isn't holding the jump button
+            if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+                rb.velocity += Physics.gravity * jumpDragMultiplier * Time.deltaTime;
         }
-        else
-        {
-            jumped = false;
-        }
-
-        // -- The following code tweaks the physics to make the jump feel better -- //
-
-        // Enhance the fall speed
-        if(rb.velocity.y < 0) 
-            rb.velocity += Physics.gravity * fallMultiplier * Time.deltaTime;
-
-        // Fall faster if player isn't holding the jump button
-        if(rb.velocity.y > 0 && !Input.GetButton("Jump"))
-            rb.velocity += Physics.gravity * jumpDragMultiplier * Time.deltaTime;
     }
 
     public void ChangeJumpHeight(float factor)
@@ -96,5 +100,11 @@ public class PlayerMovement : MonoBehaviour
     public void ResetJumpHeight()
     {
         JumpHeight = OriginalJumpHeight;
+    }
+
+    public void ResetDead()
+    {
+        dead = !dead;
+        rb.isKinematic = !rb.isKinematic;
     }
 }
