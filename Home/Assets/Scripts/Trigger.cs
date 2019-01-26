@@ -20,6 +20,7 @@ public class Trigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider c)
     {
+        Debug.Log("Triggered");
         if(c.tag == "Player")
         {
             foreach(ITriggerable t in triggerables)
