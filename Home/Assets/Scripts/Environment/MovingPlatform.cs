@@ -7,6 +7,7 @@ public class MovingPlatform : MonoBehaviour
     public float moveSpeed = 10f;
     public GameObject[] movementPoints;
     public movementMode MovementMode = movementMode.loop;
+    public int StartingIndex = 0;
 
     private bool decreasing;
     public enum movementMode
@@ -17,6 +18,11 @@ public class MovingPlatform : MonoBehaviour
     }
 
     private int curNodeIndex = 0;
+
+    private void Start()
+    {
+        curNodeIndex = StartingIndex;
+    }
 
     private void Update()
     {
