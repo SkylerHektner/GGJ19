@@ -8,16 +8,29 @@ public class PlayerMovement : MonoBehaviour
     public float JumpHeight = 10f;
     public float minJumpThresh = 1f;
     public int numAllowedJumps = 2;
+    public static PlayerMovement instance;
 
     private Rigidbody rb;
 
+    private float OriginalJumpHeight;
     private bool jumped = false;
     private int jumpCounter = 0;
     private float fallMultiplier = 1.5f; // Makes the player fall faster.
-    private float jumpDragMultiplier = 0.8f; 
+    private float jumpDragMultiplier = 0.8f;
 
-    private void Start()
+    private void Awake()
     {
+        // singleton
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+        OriginalJumpHeight = JumpHeight;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -73,5 +86,15 @@ public class PlayerMovement : MonoBehaviour
         // Fall faster if player isn't holding the jump button
         if(rb.velocity.y > 0 && !Input.GetButton("Jump"))
             rb.velocity += Physics.gravity * jumpDragMultiplier * Time.fixedDeltaTime;
+    }
+
+    public void ChangeJumpHeight(float factor)
+    {
+        JumpHeight *= factor;
+    }
+
+    public void ResetJumpHeight()
+    {
+        JumpHeight = OriginalJumpHeight;
     }
 }

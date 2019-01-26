@@ -9,23 +9,26 @@ public class BlueprintItem : MonoBehaviour
     public Material highlightMaterial;
 
     public string itemName;
+
+    private MeshRenderer meshRenderer;
     void Start()
     {
-        GetComponent<MeshRenderer>().material = blueprintMaterial;
+        meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer.material = blueprintMaterial;
     }
 
     public void ShowItem()
     {
-        GetComponent<MeshRenderer>().material = normalMaterial;
+        meshRenderer.material = normalMaterial;
     }
 
     public void HighlightItem()
     {
-        GetComponent<MeshRenderer>().material = highlightMaterial;
+        meshRenderer.material = highlightMaterial;
     }
 
     public void CancelHighlightItem()
     {
-        GetComponent<MeshRenderer>().material = blueprintMaterial;
+        meshRenderer.material = blueprintMaterial;
     }
 }
