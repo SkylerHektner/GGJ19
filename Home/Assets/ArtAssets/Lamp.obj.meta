@@ -1,44 +1,22 @@
 fileFormatVersion: 2
-guid: 5d3815c62fbdbef49a71818f2b52335f
+guid: 2b4973f7a9d8b624094066393d7feaad
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: pPlane1
-    100004: LightSwitch:pPlane1
-    100006: LightSwitch1:pPlane1
-    400000: //RootNode
-    400002: pPlane1
-    400004: LightSwitch:pPlane1
-    400006: LightSwitch1:pPlane1
-    2100000: pPlane1Mat
-    2100002: LightSwitch_pPlane1Mat
-    2100004: LightSwitch1_initialShadingGroup
-    2300000: pPlane1
-    2300002: LightSwitch:pPlane1
-    2300004: LightSwitch1:pPlane1
-    3300000: pPlane1
-    3300002: LightSwitch:pPlane1
-    3300004: LightSwitch1:pPlane1
-    4300000: pPlane1
-    4300002: LightSwitch:pPlane1
-    4300004: LightSwitch1:pPlane1
+    100000: Lamp
+    100002: //RootNode
+    400000: Lamp
+    400002: //RootNode
+    2100000: LampMat
+    2300000: Lamp
+    3300000: Lamp
+    4300000: Lamp
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: LightSwitch1_initialShadingGroup
-    second: {fileID: 2100000, guid: bf702dbe763a7e44eaafff0ef73827f9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: LightSwitch_pPlane1Mat
-    second: {fileID: 2100000, guid: bf702dbe763a7e44eaafff0ef73827f9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pPlane1Mat
-    second: {fileID: 2100000, guid: bf702dbe763a7e44eaafff0ef73827f9, type: 2}
+      name: LampMat
+    second: {fileID: 2100000, guid: 0f5192cbd91e28e4a83f5db6de1e0804, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
