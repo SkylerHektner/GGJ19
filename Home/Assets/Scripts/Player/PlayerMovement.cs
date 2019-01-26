@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool jumped = false;
     private int jumpCounter = 0;
+    private float fallMultiplier = 1.5f; // Makes the player fall faster.
+    private float jumpDragMultiplier = 0.8f; 
 
     private void Start()
     {
@@ -61,5 +63,15 @@ public class PlayerMovement : MonoBehaviour
         {
             jumped = false;
         }
+
+        // -- The following code tweaks the physics to make the jump feel better -- //
+
+        // Enhance the fall speed
+        if(rb.velocity.y < 0) 
+            rb.velocity += Physics.gravity * fallMultiplier * Time.deltaTime;
+
+        // Fall faster if player isn't holding the jump button
+        if(rb.velocity.y > 0 && !Input.GetButton("Jump"))
+            rb.velocity += Physics.gravity * jumpDragMultiplier * Time.deltaTime;
     }
 }
