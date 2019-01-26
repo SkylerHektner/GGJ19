@@ -26,7 +26,10 @@ public class Stalactite : MonoBehaviour, ITriggerable
     // When it hits the ground.
     private void OnCollisionEnter(Collision c)
     {
-        rb.isKinematic = true;
-        Instantiate(particleEffect, transform.position, Quaternion.identity);
+        if(c.gameObject.tag == "Lava")
+        {
+            rb.isKinematic = true;
+            Instantiate(particleEffect, transform.position, Quaternion.identity);
+        }
     }
 }
