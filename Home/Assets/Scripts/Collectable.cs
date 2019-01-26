@@ -8,6 +8,7 @@ public class Collectable : MonoBehaviour
 
     private void OnCollisionEnter(Collision c)
     {
+        
         if(c.gameObject.tag == "Player")
         {
             Pickup(c.gameObject, key);

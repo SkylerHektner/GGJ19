@@ -8,7 +8,7 @@ public class PlayerInventory : MonoBehaviour
 
     void Start()
     {
-        
+        collectedItems = new List<string>();
     }
 
     void Update()
