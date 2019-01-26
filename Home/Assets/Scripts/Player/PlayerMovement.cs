@@ -68,6 +68,10 @@ public class PlayerMovement : MonoBehaviour
                 Vector3 curVel = rb.velocity;
                 curVel.x = 0;
                 curVel.z = 0;
+                if (curVel.y > 0)
+                {
+                    curVel.y = 0;
+                }
                 rb.AddForce(Vector3.up * JumpHeight + -curVel, ForceMode.VelocityChange);
                 Debug.Log("JUMPING");
             }
