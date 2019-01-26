@@ -6,7 +6,9 @@ public class BlueprintItem : MonoBehaviour
 {
     public Material blueprintMaterial;
     public Material normalMaterial;
+    public Material highlightMaterial;
 
+    public string itemName;
     void Start()
     {
         GetComponent<MeshRenderer>().material = blueprintMaterial;
@@ -17,11 +19,13 @@ public class BlueprintItem : MonoBehaviour
         GetComponent<MeshRenderer>().material = normalMaterial;
     }
 
-    private void Update()
+    public void HighlightItem()
     {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            ShowItem();
-        }
+        GetComponent<MeshRenderer>().material = highlightMaterial;
+    }
+
+    public void CancelHighlightItem()
+    {
+        GetComponent<MeshRenderer>().material = blueprintMaterial;
     }
 }

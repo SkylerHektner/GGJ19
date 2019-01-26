@@ -1,0 +1,66 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Blueprint : MonoBehaviour
+{
+    [Header("A Collection of Blueprint Items")]
+    public List<BlueprintItem> blueprintItems = new List<BlueprintItem>();
+    public GameObject interactionCanvas;
+    private GameObject player;
+    private List<BlueprintItem> itemsToBeShown = new List<BlueprintItem>();
+
+    void Start()
+    {
+        interactionCanvas.SetActive(false);
+        player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<PlayerInventory>().AddToInventory("a");
+        player.GetComponent<PlayerInventory>().AddToInventory("b");
+        player.GetComponent<PlayerInventory>().AddToInventory("c");
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            PlayerInventory inventory = player.GetComponent<PlayerInventory>();
+            foreach (BlueprintItem bit in itemsToBeShown)
+            {
+                bit.ShowItem();
+                inventory.RemoveFromInventory(bit.itemName);
+            }
+            itemsToBeShown.Clear();
+            interactionCanvas.SetActive(false);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            PlayerInventory inventory = other.GetComponent<PlayerInventory>();
+            foreach (BlueprintItem bit in blueprintItems)
+            {
+                if (inventory.HasItem(bit.itemName))
+                {
+                    itemsToBeShown.Add(bit);
+                    bit.HighlightItem();
+                    interactionCanvas.SetActive(true);
+                }
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            foreach (BlueprintItem bit in itemsToBeShown)
+            {
+                bit.CancelHighlightItem();
+            }
+            itemsToBeShown.Clear();
+            interactionCanvas.SetActive(false);
+        }
+    }
+}
