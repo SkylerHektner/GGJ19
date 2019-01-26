@@ -7,12 +7,14 @@ public class CarriableItem : MonoBehaviour
     public Material highlightMaterial;
 
     private MeshRenderer meshRenderer;
-    private GameObject player;
+    private GameObject camera;
+    private Rigidbody rb;
     private bool onHighlight;
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        camera = GameObject.FindGameObjectWithTag("MainCamera");
         meshRenderer = GetComponent<MeshRenderer>();
+        rb = GetComponent<Rigidbody>();
         meshRenderer.material = null;
         onHighlight = false;
     }
@@ -22,11 +24,16 @@ public class CarriableItem : MonoBehaviour
         {
             if (onHighlight)
             {
-                gameObject.transform.SetParent(player.transform, true);
+                gameObject.transform.position = new Vector3(0, 0, 1.5f);
+                gameObject.transform.SetParent(camera.transform, false);
+                rb.isKinematic = true;
+                rb.detectCollisions = false;
                 NormalItem();
             }
             else
             {
+                rb.isKinematic = false;
+                rb.detectCollisions = true;
                 gameObject.transform.parent = null;
             }
         }

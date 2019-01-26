@@ -181,24 +181,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &331918205 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6962969310544743675, guid: 65862da471f481b4f9140e7dc775e905,
-    type: 3}
-  m_PrefabInstance: {fileID: 1204963259}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &331918209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331918205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02ad5ca6adec2754db5bfcbd3a5ec0f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1204963259
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -249,7 +231,7 @@ PrefabInstance:
     - target: {fileID: 6962969309862946321, guid: 65862da471f481b4f9140e7dc775e905,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6962969309862946321, guid: 65862da471f481b4f9140e7dc775e905,
         type: 3}
@@ -356,10 +338,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1558962901}
+  m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1558962900
 GameObject:
@@ -374,8 +355,9 @@ GameObject:
   - component: {fileID: 1558962903}
   - component: {fileID: 1558962902}
   - component: {fileID: 1558962905}
+  - component: {fileID: 1558962906}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: CarriableItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -392,8 +374,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.27, z: 0}
   m_LocalScale: {x: 0.38089257, y: 0.38089257, z: 0.38089257}
   m_Children: []
-  m_Father: {fileID: 1511042325}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1558962902
 SphereCollider:
@@ -426,7 +408,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 0}
-  - {fileID: 2100000, guid: f0b6541c31d9d1d47985388286a89687, type: 2}
+  - {fileID: 2100000, guid: b3d279a35c93dea449e8eaac3d3f4972, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -467,3 +449,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightMaterial: {fileID: 2100000, guid: 06f7b7e7a3e95e047b51385640aac1b6, type: 2}
+--- !u!54 &1558962906
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558962900}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
