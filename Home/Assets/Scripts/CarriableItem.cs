@@ -4,42 +4,24 @@ using UnityEngine;
 
 public class CarriableItem : MonoBehaviour
 {
-    public Material highlightMaterial;
-
-    private MeshRenderer meshRenderer;
-    private GameObject player;
-    private bool onHighlight;
+    private Material mat;
+    public Rigidbody rb;
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        meshRenderer = GetComponent<MeshRenderer>();
-        meshRenderer.material = null;
-        onHighlight = false;
+        mat = GetComponent<Renderer>().material;
+        rb = GetComponent<Rigidbody>();
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (onHighlight)
-            {
-                gameObject.transform.SetParent(player.transform, true);
-                NormalItem();
-            }
-            else
-            {
-                gameObject.transform.parent = null;
-            }
-        }
+
     }
     public void HighlightItem()
     {
-        meshRenderer.material = highlightMaterial;
-        onHighlight = true;
+        mat.SetFloat("_FrezPower", 8f);
     }
 
     public void NormalItem()
     {
-        meshRenderer.material = null;
-        onHighlight = false;
+        mat.SetFloat("_FrezPower", 0f);
     }
 }

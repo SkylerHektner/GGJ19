@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -181,6 +181,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &220810247 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6962969309862946324, guid: 65862da471f481b4f9140e7dc775e905,
+    type: 3}
+  m_PrefabInstance: {fileID: 1204963259}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &220810254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220810247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fb12be1a40a8a44a17ca54a907a22d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 331918205}
+  interactionDistance: 3
 --- !u!1 &331918205 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6962969310544743675, guid: 65862da471f481b4f9140e7dc775e905,
@@ -374,9 +394,10 @@ GameObject:
   - component: {fileID: 1558962903}
   - component: {fileID: 1558962902}
   - component: {fileID: 1558962905}
+  - component: {fileID: 1558962906}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Carryable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -425,8 +446,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
-  - {fileID: 2100000, guid: f0b6541c31d9d1d47985388286a89687, type: 2}
+  - {fileID: 2100000, guid: 572f8bfbb7058bb48ba5c92f6868982c, type: 2}
+  - {fileID: 2100000, guid: 572f8bfbb7058bb48ba5c92f6868982c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -466,4 +487,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810577d873ef55341ac81e1ab5bf22bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightMaterial: {fileID: 2100000, guid: 06f7b7e7a3e95e047b51385640aac1b6, type: 2}
+--- !u!54 &1558962906
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558962900}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
