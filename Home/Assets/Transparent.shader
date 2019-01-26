@@ -5,12 +5,11 @@
 		_MainTex("Albedo Texture", 2D) = "white" {}
 		_TintColor("Tint Color", Color) = (1,1,1,1)
 		_Transparency("Transparency", Range(0.0,0.5)) = 0.25
-		_CutoutThresh("Cutout Threshold", Range(0.0,1.0)) = 0.2
 	}
 
 		SubShader
 		{
-			Tags {"Queue" = "Transparent" "RenderType" = "Transparent" }
+			Tags {"Queue" = "Transparent" "RenderType" = "Transparent"}
 			LOD 100
 
 			ZWrite Off
@@ -40,7 +39,6 @@
 				float4 _MainTex_ST;
 				float4 _TintColor;
 				float _Transparency;
-				float _CutoutThresh;
 
 				v2f vert(appdata v)
 				{
@@ -54,7 +52,6 @@
 				{
 					fixed4 col = tex2D(_MainTex, i.uv) + _TintColor;
 					col.a = _Transparency;
-					clip(col.r - _CutoutThresh);
 					return col;
 				}
 				ENDCG
