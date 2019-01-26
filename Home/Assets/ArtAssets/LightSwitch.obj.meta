@@ -5,13 +5,24 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     100002: pPlane1
+    100004: LightSwitch:pPlane1
     400000: //RootNode
     400002: pPlane1
+    400004: LightSwitch:pPlane1
     2100000: pPlane1Mat
+    2100002: LightSwitch_pPlane1Mat
     2300000: pPlane1
+    2300002: LightSwitch:pPlane1
     3300000: pPlane1
+    3300002: LightSwitch:pPlane1
     4300000: pPlane1
+    4300002: LightSwitch:pPlane1
   externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LightSwitch_pPlane1Mat
+    second: {fileID: 2100000, guid: bf702dbe763a7e44eaafff0ef73827f9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
