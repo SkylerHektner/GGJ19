@@ -51,7 +51,7 @@
 				fixed4 frag(v2f i) : SV_Target
 				{
 					fixed4 col = tex2D(_MainTex, i.uv) + _TintColor;
-					col.a = _Transparency;
+					col.a = clamp(_Transparency, 0, 1);
 					return col;
 				}
 				ENDCG

@@ -16,4 +16,12 @@ public class BlueprintItem : MonoBehaviour
     {
         GetComponent<MeshRenderer>().material = normalMaterial;
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            ShowItem();
+        }
+    }
 }
