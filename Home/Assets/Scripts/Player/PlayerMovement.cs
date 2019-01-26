@@ -16,8 +16,11 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
 
     private float OriginalJumpHeight;
-    private bool jumped = false;
     private int jumpCounter = 0;
+    private bool jumped = false;
+    private bool shouldFall = false;
+    private float h;
+    private float v;
     private float fallMultiplier = 1.5f; // Makes the player fall faster.
     private float jumpDragMultiplier = 0.8f;
 
@@ -37,6 +40,19 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    private void Update()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            jumped = true;
+        }
+
+        shouldFall = !Input.GetButton("Jump");
+
+        h = Input.GetAxis("Horizontal");
+        v = Input.GetAxis("Vertical");
+    }
+
     public void FixedUpdate()
     {
         if (!dead)
@@ -49,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
             forward.y = 0;
             forward.Normalize();
 
-            Vector3 movement = right * Input.GetAxis("Horizontal") + forward * Input.GetAxis("Vertical");
+            Vector3 movement = right * h + forward * v;
 
             rb.MovePosition(movement * Speed * Time.fixedDeltaTime + transform.position);
 
@@ -62,12 +78,12 @@ public class PlayerMovement : MonoBehaviour
             }
 
             // Check if player is trying to jump
-            if (!float.Equals(Input.GetAxis("Jump"), 0f))
+            if (jumped)
             {
+                jumped = false;
                 Debug.Log(jumpCounter);
-                if (jumpCounter < numAllowedJumps && !jumped)
+                if (jumpCounter < numAllowedJumps)
                 {
-                    jumped = true;
                     jumpCounter += 1;
                     Vector3 curVel = rb.velocity;
                     curVel.x = 0;
@@ -77,12 +93,7 @@ public class PlayerMovement : MonoBehaviour
                         curVel.y = 0;
                     }
                     rb.AddForce(Vector3.up * JumpHeight + -curVel, ForceMode.VelocityChange);
-                    Debug.Log("JUMPING");
                 }
-            }
-            else
-            {
-                jumped = false;
             }
 
             // -- The following code tweaks the physics to make the jump feel better -- //
@@ -92,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity += Physics.gravity * fallMultiplier * Time.fixedDeltaTime;
 
             // Fall faster if player isn't holding the jump button
-            if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+            if (rb.velocity.y > 0 && shouldFall)
                 rb.velocity += Physics.gravity * jumpDragMultiplier * Time.fixedDeltaTime;
         }
     }
