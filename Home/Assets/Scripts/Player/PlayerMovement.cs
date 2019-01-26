@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float Speed = 5f;
     public float JumpHeight = 10f;
-    public float minJumpThresh = 1f;
+    public float minJumpThresh = 0.55f;
     public int numAllowedJumps = 2;
     public static PlayerMovement instance;
     public GameObject cam;
@@ -56,8 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
             // Reset Jump Counter if player hits the floor
             RaycastHit hitInfo;
-            if (jumpCounter != 0 && Physics.Raycast(transform.position, Vector3.down, out hitInfo) &&
-                (hitInfo.point - transform.position).magnitude < minJumpThresh)
+            if (jumpCounter != 0 && Physics.Raycast(transform.position, Vector3.down, out hitInfo, minJumpThresh))
             {
                 jumpCounter = 0;
             }
@@ -65,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
             // Check if player is trying to jump
             if (!float.Equals(Input.GetAxis("Jump"), 0f))
             {
+                Debug.Log(jumpCounter);
                 if (jumpCounter < numAllowedJumps && !jumped)
                 {
                     jumped = true;

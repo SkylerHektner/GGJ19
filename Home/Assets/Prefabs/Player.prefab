@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 5
   JumpHeight: 4
-  minJumpThresh: 0.5
+  minJumpThresh: 0.55
   numAllowedJumps: 2
   cam: {fileID: 6962969310544743675}
 --- !u!114 &8237193015398416046
