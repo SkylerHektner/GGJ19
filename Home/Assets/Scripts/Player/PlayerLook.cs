@@ -27,6 +27,14 @@ public class PlayerLook : MonoBehaviour
 
     Quaternion originalRotation;
 
+    public Vector3 currentFacingDirection
+    {
+        get
+        {
+            return cam.transform.forward;
+        }
+    }
+
     void FixedUpdate()
     {
         rotAverageY = 0f;
