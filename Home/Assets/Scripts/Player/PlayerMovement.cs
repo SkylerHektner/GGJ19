@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float minJumpThresh = 1f;
     public int numAllowedJumps = 2;
     public static PlayerMovement instance;
+    public GameObject cam;
 
     private Rigidbody rb;
 
@@ -38,10 +39,10 @@ public class PlayerMovement : MonoBehaviour
     {
 
         // Movement
-        Vector3 right = transform.right;
+        Vector3 right = cam.transform.right;
         right.y = 0;
         right.Normalize();
-        Vector3 forward = transform.forward;
+        Vector3 forward = cam.transform.forward;
         forward.y = 0;
         forward.Normalize();
 

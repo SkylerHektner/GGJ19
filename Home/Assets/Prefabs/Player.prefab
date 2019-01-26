@@ -78,9 +78,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4912f3fe1ed304aa5ce5cab2ab364b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sensitivity: 5
+  Sensitivity: 2
   minimumY: -60
   maximumY: 60
+  cam: {fileID: 6962969310544743675}
   frameCounter: 5
 --- !u!114 &1938137310
 MonoBehaviour:
@@ -98,6 +99,7 @@ MonoBehaviour:
   JumpHeight: 4
   minJumpThresh: 0.5
   numAllowedJumps: 2
+  cam: {fileID: 6962969310544743675}
 --- !u!114 &8237193015398416046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +139,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6962969310544743675}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.245, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6962969309862946321}
