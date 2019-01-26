@@ -19,19 +19,16 @@ public class Interaction : MonoBehaviour
         if (!carrying)
         {
             RaycastHit hitInfo;
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hitInfo, interactionDistance))
-            {
-                if (hitInfo.collider.tag == "Carryable")
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hitInfo, interactionDistance)
+                    && hitInfo.collider.tag == "Carryable")
+            { 
+                curCandidate = hitInfo.collider.gameObject.GetComponent<CarriableItem>();
+                curCandidate.HighlightItem();
+                if (Input.GetButtonDown("Interact"))
                 {
-                    curCandidate = hitInfo.collider.gameObject.GetComponent<CarriableItem>();
-                    curCandidate.HighlightItem();
-                    if (Input.GetButtonDown("Interact"))
-                    {
-                        offsetMagnitude = (curCandidate.transform.position - cam.transform.position).magnitude;
-                        curCandidate.rb.useGravity = false;
-                        carrying = true;
-                        Debug.Log("CARRYING");
-                    }
+                    offsetMagnitude = (curCandidate.transform.position - cam.transform.position).magnitude;
+                    curCandidate.rb.useGravity = false;
+                    carrying = true;
                 }
             }
             else if (curCandidate != null)

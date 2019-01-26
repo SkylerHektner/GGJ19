@@ -6,6 +6,10 @@ public class CarriableItem : MonoBehaviour
 {
     private Material mat;
     public Rigidbody rb;
+    public float selectedFrezStrength = 8f;
+
+    private float targetFrez = 0;
+    private float curFrez = 0;
     private void Start()
     {
         mat = GetComponent<Renderer>().material;
@@ -13,7 +17,12 @@ public class CarriableItem : MonoBehaviour
     }
     private void Update()
     {
-
+        if (targetFrez != curFrez)
+        {
+            curFrez = Mathf.Lerp(curFrez, targetFrez, Time.deltaTime * 5f);
+            mat.SetFloat("_FrezPower", curFrez);
+        }
+            
 //=======
 //    public Material highlightMaterial;
 
@@ -52,11 +61,11 @@ public class CarriableItem : MonoBehaviour
     }
     public void HighlightItem()
     {
-        mat.SetFloat("_FrezPower", 8f);
+        targetFrez = selectedFrezStrength;
     }
 
     public void NormalItem()
     {
-        mat.SetFloat("_FrezPower", 0f);
+        targetFrez = 0f;
     }
 }
