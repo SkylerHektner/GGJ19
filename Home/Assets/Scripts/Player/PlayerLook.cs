@@ -12,6 +12,8 @@ public class PlayerLook : MonoBehaviour
     public float minimumY = -60F;
     public float maximumY = 60F;
 
+    public GameObject cam;
+
     private float rotationX = 0F;
     private float rotationY = 0F;
 
@@ -25,7 +27,7 @@ public class PlayerLook : MonoBehaviour
 
     Quaternion originalRotation;
 
-    void Update()
+    void FixedUpdate()
     {
         rotAverageY = 0f;
         rotAverageX = 0f;
@@ -63,7 +65,7 @@ public class PlayerLook : MonoBehaviour
         Quaternion yQuaternion = Quaternion.AngleAxis(rotAverageY, Vector3.left);
         Quaternion xQuaternion = Quaternion.AngleAxis(rotAverageX, Vector3.up);
 
-        transform.localRotation = originalRotation * xQuaternion * yQuaternion;
+        cam.transform.localRotation = originalRotation * xQuaternion * yQuaternion;
     }
 
     void Start()
@@ -71,7 +73,7 @@ public class PlayerLook : MonoBehaviour
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb)
             rb.freezeRotation = true;
-        originalRotation = transform.localRotation;
+        originalRotation = cam.transform.localRotation;
     }
 
     public static float ClampAngle(float angle, float min, float max)
