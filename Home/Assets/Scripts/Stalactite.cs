@@ -29,7 +29,11 @@ public class Stalactite : MonoBehaviour, ITriggerable
         if(c.gameObject.tag == "Lava")
         {
             rb.isKinematic = true;
-            Instantiate(particleEffect, transform.position, Quaternion.identity);
+            Transform particles = Instantiate(particleEffect, transform.position, Quaternion.identity);
+
+            // Scale the particles to the size of the stalactite.
+            particles.parent = transform;
+            particles.localScale = Vector3.one;
         }
     }
 }
