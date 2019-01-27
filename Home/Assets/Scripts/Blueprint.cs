@@ -14,9 +14,9 @@ public class Blueprint : MonoBehaviour
     {
         interactionCanvas.SetActive(false);
         player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<PlayerInventory>().AddToInventory("a");
-        player.GetComponent<PlayerInventory>().AddToInventory("b");
-        player.GetComponent<PlayerInventory>().AddToInventory("c");
+        //Testcode need to be deleted.
+        player.GetComponent<PlayerInventory>().AddToInventory("pillow1");
+        player.GetComponent<PlayerInventory>().AddToInventory("pillow2");
     }
 
     void Update()
