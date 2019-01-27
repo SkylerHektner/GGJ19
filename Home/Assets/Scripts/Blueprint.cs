@@ -16,13 +16,10 @@ public class Blueprint : MonoBehaviour
 
     void Start()
     {
-        interactionCanvas.SetActive(false);
+        //interactionCanvas.SetActive(false);
         player = GameObject.FindGameObjectWithTag("Player");
         inventory = player.GetComponent<PlayerInventory>();
         itemsRemaining = blueprintItems.Count;
-        //Testcode need to be deleted.
-        player.GetComponent<PlayerInventory>().AddToInventory("pillow1");
-        player.GetComponent<PlayerInventory>().AddToInventory("pillow2");
         buildSound = GetComponent<AudioSource>();
     }
 
@@ -56,7 +53,7 @@ public class Blueprint : MonoBehaviour
                 {
                     itemsToBeShown.Add(bit);
                     bit.HighlightItem();
-                    interactionCanvas.SetActive(true);
+                    //interactionCanvas.SetActive(true);
                 }
             }
         }
@@ -71,7 +68,7 @@ public class Blueprint : MonoBehaviour
                 bit.CancelHighlightItem();
             }
             itemsToBeShown.Clear();
-            interactionCanvas.SetActive(false);
+            //interactionCanvas.SetActive(false);
         }
     }
 }
