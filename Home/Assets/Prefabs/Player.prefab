@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4662611387306943016}
   - component: {fileID: 7178293375011034174}
   - component: {fileID: 7085343664744774767}
+  - component: {fileID: 283942335}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -103,6 +104,7 @@ MonoBehaviour:
   minJumpThresh: 0.55
   numAllowedJumps: 2
   cam: {fileID: 6962969310544743675}
+  relativeVelocity: {x: 0, y: 0, z: 0}
 --- !u!114 &8237193015398416046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,6 +405,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &283942335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6962969309862946324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fb12be1a40a8a44a17ca54a907a22d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 6962969310544743675}
+  interactionDistance: 3
 --- !u!1 &6962969310544743675
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,7 +509,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6962969310544743675}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02ad5ca6adec2754db5bfcbd3a5ec0f7, type: 3}
   m_Name: 

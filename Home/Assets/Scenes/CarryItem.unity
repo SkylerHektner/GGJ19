@@ -449,6 +449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+  selectedFrezStrength: 8
 --- !u!54 &1558962906
 Rigidbody:
   m_ObjectHideFlags: 0
