@@ -20,15 +20,15 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 2fe05b4c6f4a5224c984743e151213c2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 64c173419532b8644b346d76bd5bb0e4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _DispAmount: 0.05
+    - _DispAmount: 0.13
     - _Glossiness: 0.5
     - _Metallic: 0
     - _Tess: 32
-    - _TextureScaling: 0.22
+    - _TextureScaling: 0.5
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ScrollDirection: {r: 0.5, g: -0.5, b: 0, a: 0}
