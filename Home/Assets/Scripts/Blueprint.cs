@@ -6,17 +6,24 @@ public class Blueprint : MonoBehaviour
 {
     [Header("A Collection of Blueprint Items")]
     public List<BlueprintItem> blueprintItems = new List<BlueprintItem>();
+    public GameObject interactionCanvas;
     private GameObject player;
     private List<BlueprintItem> itemsToBeShown = new List<BlueprintItem>();
     private PlayerInventory inventory;
     private float distance = 2f;
     private int itemsRemaining;
+    private AudioSource buildSound;
 
     void Start()
     {
+        interactionCanvas.SetActive(false);
         player = GameObject.FindGameObjectWithTag("Player");
         inventory = player.GetComponent<PlayerInventory>();
         itemsRemaining = blueprintItems.Count;
+        //Testcode need to be deleted.
+        player.GetComponent<PlayerInventory>().AddToInventory("pillow1");
+        player.GetComponent<PlayerInventory>().AddToInventory("pillow2");
+        buildSound = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -34,6 +41,7 @@ public class Blueprint : MonoBehaviour
             inventory.RemoveFromInventory(itemsToBeShown[0].itemName);
             itemsRemaining--;
             itemsToBeShown.Remove(itemsToBeShown[0]);
+            buildSound.Play();
         }
     }
 
@@ -48,6 +56,7 @@ public class Blueprint : MonoBehaviour
                 {
                     itemsToBeShown.Add(bit);
                     bit.HighlightItem();
+                    interactionCanvas.SetActive(true);
                 }
             }
         }
@@ -62,15 +71,7 @@ public class Blueprint : MonoBehaviour
                 bit.CancelHighlightItem();
             }
             itemsToBeShown.Clear();
+            interactionCanvas.SetActive(false);
         }
-    }
-
-    private bool InRangeOfFort()
-    {
-        Debug.Log(Vector3.Distance(player.transform.position, transform.position));
-        if(Vector3.Distance(player.transform.position, transform.position) < distance)
-            return true;
-        
-        return false;
     }
 }
