@@ -29,7 +29,9 @@ public class Stalactite : MonoBehaviour, ITriggerable
     {
         if(c.gameObject.tag == "Lava" && !particlesActivated)
         {
+            Debug.Log("SETTING KINEMATIC");
             particlesActivated = true;
+            Debug.Log("HIT");
             rb.isKinematic = true;
             Transform particles = Instantiate(particleEffect, transform.position, Quaternion.identity);
 
