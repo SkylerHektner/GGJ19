@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private AudioSource stepSound1;
     private AudioSource stepSound2;
     private AudioSource jumpSound;
+    private AudioSource pickupSound;
 
     private float OriginalJumpHeight;
     private int jumpCounter = 0;
@@ -48,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         stepSound1 = audios[0];
         stepSound2 = audios[1];
         jumpSound = audios[2];
+        pickupSound = audios[3];
         relativeVelocity = Vector3.zero;
     }
 
@@ -161,5 +163,10 @@ public class PlayerMovement : MonoBehaviour
     {
         dead = !dead;
         rb.isKinematic = !rb.isKinematic;
+    }
+
+    public void PlayPickUpSound()
+    {
+        pickupSound.Play();
     }
 }
