@@ -15,6 +15,12 @@ public class MimicMovement : MonoBehaviour
         posOffset = transform.position - target.position;
     }
 
+    public void RecalcOffsets()
+    {
+        rotOffset = transform.rotation.eulerAngles - target.rotation.eulerAngles;
+        posOffset = transform.position - target.position;
+    }
+
     // Update is called once per frame
     void Update()
     {
