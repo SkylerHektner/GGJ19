@@ -10,25 +10,29 @@ public class Blueprint : MonoBehaviour
     private List<BlueprintItem> itemsToBeShown = new List<BlueprintItem>();
     private PlayerInventory inventory;
     private float distance = 2f;
+    private int itemsRemaining;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         inventory = player.GetComponent<PlayerInventory>();
-
-        //Testcode need to be deleted.
-        player.GetComponent<PlayerInventory>().AddToInventory("Pillow1");
-        player.GetComponent<PlayerInventory>().AddToInventory("Pillow2");
-        player.GetComponent<PlayerInventory>().AddToInventory("Lamp");
+        itemsRemaining = blueprintItems.Count;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && InRangeOfFort())
+        if(itemsRemaining == 0) // The fort is built!
+        {
+            // TODO: Win state.
+            return;
+        }   
+
+        if (Input.GetKeyDown(KeyCode.E))
         {
             PlayerInventory inventory = player.GetComponent<PlayerInventory>();
             itemsToBeShown[0].ShowItem();
             inventory.RemoveFromInventory(itemsToBeShown[0].itemName);
+            itemsRemaining--;
             itemsToBeShown.Remove(itemsToBeShown[0]);
         }
     }
