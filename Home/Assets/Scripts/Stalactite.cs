@@ -31,6 +31,7 @@ public class Stalactite : MonoBehaviour, ITriggerable
         {
             Debug.Log("SETTING KINEMATIC");
             particlesActivated = true;
+            Debug.Log("HIT");
             rb.isKinematic = true;
             Transform particles = Instantiate(particleEffect, transform.position, Quaternion.identity);
 
