@@ -9,38 +9,36 @@ public class Blueprint : MonoBehaviour
     public GameObject interactionCanvas;
     private GameObject player;
     private List<BlueprintItem> itemsToBeShown = new List<BlueprintItem>();
+    private PlayerInventory inventory;
+    private float distance = 2f;
+    private int itemsRemaining;
     private AudioSource buildSound;
 
     void Start()
     {
-        interactionCanvas.SetActive(false);
+        //interactionCanvas.SetActive(false);
         player = GameObject.FindGameObjectWithTag("Player");
-        //Testcode need to be deleted.
-        player.GetComponent<PlayerInventory>().AddToInventory("pillow1");
-        player.GetComponent<PlayerInventory>().AddToInventory("pillow2");
+        inventory = player.GetComponent<PlayerInventory>();
+        itemsRemaining = blueprintItems.Count;
         buildSound = GetComponent<AudioSource>();
     }
 
     void Update()
     {
+        if(itemsRemaining == 0) // The fort is built!
+        {
+            // TODO: Win state.
+            return;
+        }   
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             PlayerInventory inventory = player.GetComponent<PlayerInventory>();
-            if (itemsToBeShown.Count == 0)
-            {
-                interactionCanvas.SetActive(false);
-            }
-            else
-            {
-                buildSound.Play();
-                itemsToBeShown[0].ShowItem();
-                inventory.RemoveFromInventory(itemsToBeShown[0].itemName);
-                itemsToBeShown.Remove(itemsToBeShown[0]);
-                if (itemsToBeShown.Count == 0)
-                {
-                    interactionCanvas.SetActive(false);
-                }
-            }
+            itemsToBeShown[0].ShowItem();
+            inventory.RemoveFromInventory(itemsToBeShown[0].itemName);
+            itemsRemaining--;
+            itemsToBeShown.Remove(itemsToBeShown[0]);
+            buildSound.Play();
         }
     }
 
@@ -55,7 +53,7 @@ public class Blueprint : MonoBehaviour
                 {
                     itemsToBeShown.Add(bit);
                     bit.HighlightItem();
-                    interactionCanvas.SetActive(true);
+                    //interactionCanvas.SetActive(true);
                 }
             }
         }
@@ -70,7 +68,7 @@ public class Blueprint : MonoBehaviour
                 bit.CancelHighlightItem();
             }
             itemsToBeShown.Clear();
-            interactionCanvas.SetActive(false);
+            //interactionCanvas.SetActive(false);
         }
     }
 }
