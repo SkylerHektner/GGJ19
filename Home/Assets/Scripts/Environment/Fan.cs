@@ -6,6 +6,29 @@ public class Fan : MonoBehaviour
 {
     public float power;
 
+    private AudioSource fanSound;
+
+    private void Awake()
+    {
+        fanSound = GetComponent<AudioSource>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            fanSound.Play();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            fanSound.Stop();
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
