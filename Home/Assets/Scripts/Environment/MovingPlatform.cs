@@ -30,6 +30,7 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
+        Debug.Log("ENTER");
         if (col.collider.tag == "Player")
         {
             pm = col.gameObject.GetComponent<PlayerMovement>();
@@ -38,6 +39,7 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnCollisionExit(Collision col)
     {
+        Debug.Log("EXIT");
         pm.relativeVelocity = Vector3.zero;
         pm = null;
     }
@@ -94,7 +96,7 @@ public class MovingPlatform : MonoBehaviour
         // if the player is on us update their relative velocity
         if (pm != null)
         {
-            pm.relativeVelocity = (transform.position - lastPos) * 1 / Time.deltaTime;
+            pm.relativeVelocity = 1.15f * (transform.position - lastPos) * (1f / Time.deltaTime);
         }
         lastPos = transform.position;
     }
