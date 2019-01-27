@@ -16279,11 +16279,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 460692508}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a0865aa49ddfac499884c59cac3d195, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c41ff385776d4c4ca906636221f4589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toTP: {fileID: 1987863442}
-  dest: {fileID: 1287602434}
+  targetPos: {fileID: 1287602435}
+  targetFacing: {x: 0, y: 0, z: 0}
+  facingErrorThresh: 60
 --- !u!114 &460692510
 MonoBehaviour:
   m_ObjectHideFlags: 0
