@@ -13,7 +13,7 @@ public class BlueprintItem : MonoBehaviour
     private MeshRenderer meshRenderer;
     void Start()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer = GetComponentInChildren<MeshRenderer>();
         meshRenderer.material = blueprintMaterial;
     }
 

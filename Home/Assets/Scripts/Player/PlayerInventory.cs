@@ -4,17 +4,7 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    private List<string> collectedItems; // The items that are currently collected.
-
-    void Start()
-    {
-        collectedItems = new List<string>();
-    }
-
-    void Update()
-    {
-        
-    }
+    private List<string> collectedItems = new List<string>(); // The items that are currently collected.
     
     public void AddToInventory(string key)
     {
