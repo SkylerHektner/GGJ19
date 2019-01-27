@@ -6,6 +6,7 @@ public class Stalactite : MonoBehaviour, ITriggerable
 {
     [SerializeField] private Transform particleEffect;
     private Rigidbody rb;
+    private bool particlesActivated;
 
     void Start()
     {
@@ -26,8 +27,9 @@ public class Stalactite : MonoBehaviour, ITriggerable
     // When it hits the ground.
     private void OnCollisionEnter(Collision c)
     {
-        if(c.gameObject.tag == "Lava")
+        if(c.gameObject.tag == "Lava" && !particlesActivated)
         {
+            particlesActivated = true;
             rb.isKinematic = true;
             Transform particles = Instantiate(particleEffect, transform.position, Quaternion.identity);
 
