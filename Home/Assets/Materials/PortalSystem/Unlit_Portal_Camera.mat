@@ -23,10 +23,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _RefractionTex:
+        m_Texture: {fileID: 2800000, guid: c74202a30ade299429842a625908cedf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SecondaryTex:
         m_Texture: {fileID: 8400000, guid: a3c65cd82fe95fb4e98627c37ad630a0, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats: []
+    m_Floats:
+    - _ScrollSpeed: 1
     m_Colors:
     - _ReplaceColor: {r: 0.9372549, g: 0.5803922, b: 1, a: 0}
+    - _StartingOffset: {r: 0, g: 0, b: 0, a: 0}
