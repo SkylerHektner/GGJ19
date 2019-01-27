@@ -42,7 +42,7 @@
 		{
 			half3 worldPos = mul(unity_ObjectToWorld, v.vertex);
 			half2 UV = worldPos.xz * _TextureScaling + _ScrollDirection * _Time.x;
-			half4 UVbigger = half4(UV.x, UV.y, 0, 0);
+			half4 UVbigger = half4(UV.x, UV.y, 0, 4);
 			fixed4 c = tex2Dlod(_MainTex, UVbigger);
 			v.vertex.y += (1 - c.r) * _DispAmount;
 		}

@@ -29,9 +29,9 @@ public class Blueprint : MonoBehaviour
         {
             // TODO: Win state.
             return;
-        }   
+        }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetButtonDown("Interact"))
         {
             PlayerInventory inventory = player.GetComponent<PlayerInventory>();
             itemsToBeShown[0].ShowItem();
