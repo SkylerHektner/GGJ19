@@ -10,6 +10,9 @@ public class MovingPlatform : MonoBehaviour
     public int StartingIndex = 0;
 
     private bool decreasing;
+
+    private PlayerMovement pm;
+    private Vector3 lastPos;
     public enum movementMode
     {
         sequence, // 0, 1, 2, 1, 0
@@ -22,6 +25,21 @@ public class MovingPlatform : MonoBehaviour
     private void Start()
     {
         curNodeIndex = StartingIndex;
+        lastPos = transform.position;
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.collider.tag == "Player")
+        {
+            pm = col.gameObject.GetComponent<PlayerMovement>();
+        }
+    }
+
+    private void OnCollisionExit(Collision col)
+    {
+        pm.relativeVelocity = Vector3.zero;
+        pm = null;
     }
 
     private void Update()
@@ -72,5 +90,12 @@ public class MovingPlatform : MonoBehaviour
         // move towards the next node
         Vector3 dirVec = (movementPoints[curNodeIndex].transform.position - transform.position).normalized * moveSpeed * Time.deltaTime;
         transform.position += dirVec;
+
+        // if the player is on us update their relative velocity
+        if (pm != null)
+        {
+            pm.relativeVelocity = (transform.position - lastPos) * 1 / Time.deltaTime;
+        }
+        lastPos = transform.position;
     }
 }
