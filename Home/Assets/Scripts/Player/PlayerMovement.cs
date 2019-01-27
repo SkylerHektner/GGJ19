@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
 
             // Reset Jump Counter if player hits the floor
             RaycastHit hitInfo;
-            if (Physics.Raycast(transform.position, Vector3.down, out hitInfo, minJumpThresh))
+            if (Physics.Raycast(transform.position, Vector3.down, out hitInfo, minJumpThresh, 9))
             {
                 if (!grounded)
                 {

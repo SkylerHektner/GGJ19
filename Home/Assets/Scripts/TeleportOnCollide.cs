@@ -5,6 +5,12 @@ using UnityEngine;
 public class TeleportOnCollide : MonoBehaviour
 {
     public Transform targetPos;
+    private AudioSource levelSound;
+
+    private void Awake()
+    {
+        levelSound = GetComponent<AudioSource>();
+    }
 
     public Vector3 targetFacing;
     public float facingErrorThresh;
@@ -15,6 +21,7 @@ public class TeleportOnCollide : MonoBehaviour
             PlayerLook l = collision.collider.gameObject.GetComponent<PlayerLook>();
             if ((l.currentFacingDirection - targetFacing).sqrMagnitude < facingErrorThresh)
             {
+                levelSound.Play();
                 collision.gameObject.transform.position = targetPos.position;
             }
         }
