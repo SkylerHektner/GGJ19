@@ -14,6 +14,8 @@ public class Blueprint : MonoBehaviour
     private int itemsRemaining;
     private AudioSource buildSound;
 
+    public GameObject spawnPortalBackTrigger;
+
     void Start()
     {
         //interactionCanvas.SetActive(false);
@@ -28,6 +30,7 @@ public class Blueprint : MonoBehaviour
         if(itemsRemaining == 0) // The fort is built!
         {
             // TODO: Win state.
+            spawnPortalBackTrigger.SetActive(true);
             return;
         }
 
