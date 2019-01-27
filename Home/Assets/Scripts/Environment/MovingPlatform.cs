@@ -27,7 +27,7 @@ public class MovingPlatform : MonoBehaviour
     private void Update()
     {
         // check if we have reached a node on our path
-        if ((transform.position - movementPoints[curNodeIndex].transform.position).sqrMagnitude < 0.2f)
+        if ((transform.position - movementPoints[curNodeIndex].transform.position).sqrMagnitude < 0.1f)
         {
             switch(MovementMode)
             {

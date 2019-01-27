@@ -407,7 +407,7 @@ PrefabInstance:
     - target: {fileID: 6962969309862946321, guid: 65862da471f481b4f9140e7dc775e905,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.939
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6962969309862946321, guid: 65862da471f481b4f9140e7dc775e905,
         type: 3}
@@ -458,6 +458,11 @@ PrefabInstance:
         type: 3}
       propertyPath: near clip plane
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6962969310544743652, guid: 65862da471f481b4f9140e7dc775e905,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65862da471f481b4f9140e7dc775e905, type: 3}
@@ -630,7 +635,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 796765809}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.635279, y: 0.939, z: -18.63}
+  m_LocalPosition: {x: 22.635279, y: 1, z: -18.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -985,6 +990,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPos: {fileID: 796765812}
+  targetFacing: {x: 0, y: 0, z: 1}
+  facingErrorThresh: 0.5
 --- !u!1 &1901296791 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6962969310544743675, guid: 65862da471f481b4f9140e7dc775e905,
