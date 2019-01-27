@@ -55,19 +55,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Jump"))
-        {
-            jumped = true;
-        }
+        jumped = Input.GetButtonDown("Jump");
 
         shouldFall = !Input.GetButton("Jump");
 
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
-    }
 
-    public void FixedUpdate()
-    {
         if (!dead)
         {
             // Movement
@@ -80,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3 movement = right * h + forward * v;
 
-            rb.velocity = movement * Speed + new Vector3(0, rb.velocity.y, 0) + relativeVelocity; 
+            rb.velocity = movement * Speed + new Vector3(0, rb.velocity.y, 0) + relativeVelocity;
             // rb.MovePosition(movement * Speed * Time.fixedDeltaTime + transform.position);
 
             if (grounded)
@@ -90,13 +84,6 @@ public class PlayerMovement : MonoBehaviour
                     stepSound1.volume = Random.Range(0.05f, 0.07f);
                     stepSound1.pitch = Random.Range(1.3f, 1.5f);
                     stepSound1.Play();
-                } 
-            }
-            else
-            {
-                if (jumpCounter == 0)
-                {
-                    jumpCounter++;
                 }
             }
 
@@ -110,7 +97,6 @@ public class PlayerMovement : MonoBehaviour
                     if (rb.velocity.y < 0)
                         stepSound2.Play();
                 }
-                
                 jumpCounter = 0;
             }
             else
@@ -141,12 +127,17 @@ public class PlayerMovement : MonoBehaviour
 
             // Enhance the fall speed
             if (rb.velocity.y < 0)
-                rb.velocity += Physics.gravity * fallMultiplier * Time.fixedDeltaTime;
+                rb.velocity += Physics.gravity * fallMultiplier * Time.deltaTime;
 
             // Fall faster if player isn't holding the jump button
             if (rb.velocity.y > 0 && shouldFall)
-                rb.velocity += Physics.gravity * jumpDragMultiplier * Time.fixedDeltaTime;
+                rb.velocity += Physics.gravity * jumpDragMultiplier * Time.deltaTime;
         }
+    }
+
+    public void FixedUpdate()
+    {
+        
     }
 
     public void ChangeJumpHeight(float factor)

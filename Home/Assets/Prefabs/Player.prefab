@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4912f3fe1ed304aa5ce5cab2ab364b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sensitivity: 2
+  Sensitivity: 5
   minimumY: -60
   maximumY: 60
   cam: {fileID: 6962969310544743675}
@@ -100,9 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f79df0b2bedead94f91006e92dc7c67b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
+  Speed: 4
   JumpHeight: 4
-  minJumpThresh: 0.55
+  minJumpThresh: 1
   numAllowedJumps: 2
   cam: {fileID: 6962969310544743675}
   relativeVelocity: {x: 0, y: 0, z: 0}
@@ -131,7 +131,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 02f08295411e410478304470373d94ff, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 1.3
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -323,7 +323,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 1d4492a4f3f878b4e91a8f3aa2af5cec, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 2.4
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -420,7 +420,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 6962969310544743675}
   interactionDistance: 3
-  pickupSound: {fileID: 4662611387306943016}
 --- !u!82 &414369329003480592
 AudioSource:
   m_ObjectHideFlags: 0
@@ -529,6 +528,7 @@ GameObject:
   - component: {fileID: 6962969310544743653}
   - component: {fileID: 6962969310544743674}
   - component: {fileID: 331918209}
+  - component: {fileID: 1342708183}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -572,7 +572,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -612,3 +612,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ad5ca6adec2754db5bfcbd3a5ec0f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1342708183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6962969310544743675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2595a3d9d3d9df94d8f63074a6f5ee78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: {fileID: 2100000, guid: 2f84c0d302e5f6d4c8c40a43b91403b3, type: 2}
