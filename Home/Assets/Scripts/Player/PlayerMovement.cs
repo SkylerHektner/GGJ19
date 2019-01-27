@@ -10,15 +10,21 @@ public class PlayerMovement : MonoBehaviour
     public int numAllowedJumps = 2;
     public static PlayerMovement instance;
     public GameObject cam;
+    public Vector3 relativeVelocity;
 
     private bool dead = false;
 
     private Rigidbody rb;
+    private AudioSource[] audios;
+    private AudioSource stepSound1;
+    private AudioSource stepSound2;
+    private AudioSource jumpSound;
 
     private float OriginalJumpHeight;
     private int jumpCounter = 0;
     private bool jumped = false;
     private bool shouldFall = false;
+    private bool grounded = false;
     private float h;
     private float v;
     private float fallMultiplier = 1.5f; // Makes the player fall faster.
@@ -38,6 +44,11 @@ public class PlayerMovement : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         OriginalJumpHeight = JumpHeight;
         rb = GetComponent<Rigidbody>();
+        audios = GetComponents<AudioSource>();
+        stepSound1 = audios[0];
+        stepSound2 = audios[1];
+        jumpSound = audios[2];
+        relativeVelocity = Vector3.zero;
     }
 
     private void Update()
@@ -67,14 +78,32 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3 movement = right * h + forward * v;
 
-            rb.MovePosition(movement * Speed * Time.fixedDeltaTime + transform.position);
+            rb.velocity = movement * Speed + new Vector3(0, rb.velocity.y, 0) + relativeVelocity; 
+            // rb.MovePosition(movement * Speed * Time.fixedDeltaTime + transform.position);
 
+            if (movement.magnitude > 0.5 && grounded && !stepSound1.isPlaying && !stepSound2.isPlaying)
+            {
+                int steper = Random.Range(0, 2);
+                if (steper == 0)
+                {
+                    stepSound1.Play();
+                }
+                else
+                {
+                    stepSound2.Play();
+                }
+            }
 
             // Reset Jump Counter if player hits the floor
             RaycastHit hitInfo;
             if (jumpCounter != 0 && Physics.Raycast(transform.position, Vector3.down, out hitInfo, minJumpThresh))
             {
                 jumpCounter = 0;
+                grounded = true;
+            }
+            else
+            {
+                grounded = false;
             }
 
             // Check if player is trying to jump
