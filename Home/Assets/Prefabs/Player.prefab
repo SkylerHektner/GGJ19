@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 4
   JumpHeight: 4
-  minJumpThresh: 1
+  minJumpThresh: 0.55
   numAllowedJumps: 2
   cam: {fileID: 6962969310544743675}
   relativeVelocity: {x: 0, y: 0, z: 0}
