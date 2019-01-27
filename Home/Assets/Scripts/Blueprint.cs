@@ -9,6 +9,7 @@ public class Blueprint : MonoBehaviour
     public GameObject interactionCanvas;
     private GameObject player;
     private List<BlueprintItem> itemsToBeShown = new List<BlueprintItem>();
+    private AudioSource buildSound;
 
     void Start()
     {
@@ -17,6 +18,7 @@ public class Blueprint : MonoBehaviour
         //Testcode need to be deleted.
         player.GetComponent<PlayerInventory>().AddToInventory("pillow1");
         player.GetComponent<PlayerInventory>().AddToInventory("pillow2");
+        buildSound = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -30,6 +32,7 @@ public class Blueprint : MonoBehaviour
             }
             else
             {
+                buildSound.Play();
                 itemsToBeShown[0].ShowItem();
                 inventory.RemoveFromInventory(itemsToBeShown[0].itemName);
                 itemsToBeShown.Remove(itemsToBeShown[0]);

@@ -81,25 +81,35 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = movement * Speed + new Vector3(0, rb.velocity.y, 0) + relativeVelocity; 
             // rb.MovePosition(movement * Speed * Time.fixedDeltaTime + transform.position);
 
-            if (movement.magnitude > 0.5 && grounded && !stepSound1.isPlaying && !stepSound2.isPlaying)
+            if (grounded)
             {
-                int steper = Random.Range(0, 2);
-                if (steper == 0)
+                if (movement.magnitude > 0.5 && !stepSound1.isPlaying && !stepSound2.isPlaying)
                 {
+                    stepSound1.volume = Random.Range(0.05f, 0.07f);
+                    stepSound1.pitch = Random.Range(1.3f, 1.5f);
                     stepSound1.Play();
-                }
-                else
+                } 
+            }
+            else
+            {
+                if (jumpCounter == 0)
                 {
-                    stepSound2.Play();
+                    jumpCounter++;
                 }
             }
 
             // Reset Jump Counter if player hits the floor
             RaycastHit hitInfo;
-            if (jumpCounter != 0 && Physics.Raycast(transform.position, Vector3.down, out hitInfo, minJumpThresh))
+            if (Physics.Raycast(transform.position, Vector3.down, out hitInfo, minJumpThresh))
             {
+                if (!grounded)
+                {
+                    grounded = true;
+                    if (rb.velocity.y < 0)
+                        stepSound2.Play();
+                }
+                
                 jumpCounter = 0;
-                grounded = true;
             }
             else
             {
@@ -110,9 +120,9 @@ public class PlayerMovement : MonoBehaviour
             if (jumped)
             {
                 jumped = false;
-                Debug.Log(jumpCounter);
                 if (jumpCounter < numAllowedJumps)
                 {
+                    jumpSound.Play();
                     jumpCounter += 1;
                     Vector3 curVel = rb.velocity;
                     curVel.x = 0;
