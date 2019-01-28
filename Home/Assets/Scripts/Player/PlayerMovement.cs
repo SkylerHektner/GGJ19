@@ -213,7 +213,6 @@ public class PlayerMovement : MonoBehaviour
         a.Play();
         for (float f = 0; f <= highVolume; f += 1f / 20 * highVolume)
         {
-            Debug.Log(f);
             a.volume = f;
             yield return null;
         }

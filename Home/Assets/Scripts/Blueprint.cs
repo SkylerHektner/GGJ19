@@ -40,7 +40,6 @@ public class Blueprint : MonoBehaviour
         {
             if (Input.GetButtonDown("Interact"))
             {
-                Debug.Log(itemsRemaining);
                 if (itemsRemaining > 0)
                 {
                     PlayerInventory inventory = player.GetComponent<PlayerInventory>();
