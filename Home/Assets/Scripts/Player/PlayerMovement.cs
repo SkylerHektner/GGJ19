@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private AudioSource lavaNoise;
     private AudioSource lavaLevelBGM;
     private AudioSource homeBGM;
+    private AudioSource jumppadSound;
 
     private float OriginalJumpHeight;
     private int jumpCounter = 0;
@@ -54,10 +55,10 @@ public class PlayerMovement : MonoBehaviour
         stepSound2 = audios[1];
         jumpSound = audios[2];
         pickupSound = audios[3];
-        
         homeBGM = audios[4];
         lavaNoise = audios[5];
         lavaLevelBGM = audios[6];
+        jumppadSound = audios[7];
         relativeVelocity = Vector3.zero;
     }
 
@@ -97,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
 
             // Reset Jump Counter if player hits the floor
             RaycastHit hitInfo;
-            if (Physics.Raycast(transform.position, Vector3.down, out hitInfo, minJumpThresh, 2))
+            if (Physics.Raycast(transform.position, Vector3.down, out hitInfo, minJumpThresh))
             {
                 if (!grounded)
                 {
@@ -128,6 +129,10 @@ public class PlayerMovement : MonoBehaviour
                         curVel.y = 0;
                     }
                     rb.AddForce(Vector3.up * JumpHeight + -curVel, ForceMode.VelocityChange);
+                    if (JumpHeight > OriginalJumpHeight)
+                    {
+                        jumppadSound.Play();
+                    }
                 }
             }
 
