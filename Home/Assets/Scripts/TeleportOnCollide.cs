@@ -9,11 +9,11 @@ public class TeleportOnCollide : MonoBehaviour
     public Vector3 targetFacing;
     public float facingErrorThresh;
 
-    private AudioSource[] sounds;
+    private AudioSource sound;
 
     private void Awake()
     {
-        sounds = GetComponents<AudioSource>();
+        sound = GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -24,11 +24,8 @@ public class TeleportOnCollide : MonoBehaviour
             if ((l.currentFacingDirection - targetFacing).sqrMagnitude < facingErrorThresh)
             {
                 collision.gameObject.transform.position = targetPos.position;
-                if (sounds != null)
-                {
-                    sounds[0].Play();
-                    sounds[1].Play();
-                }
+                sound.Play();
+                PlayerMovement.instance.SwitchBGM();
             }
         }
     }

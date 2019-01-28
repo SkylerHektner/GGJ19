@@ -453,25 +453,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 23459369, guid: c9b365a95e15f08459615c22ce5c73be, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3123206772296063255, guid: c9b365a95e15f08459615c22ce5c73be,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.411
-      objectReference: {fileID: 0}
-    - target: {fileID: 3123206772296063255, guid: c9b365a95e15f08459615c22ce5c73be,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.039
-      objectReference: {fileID: 0}
-    - target: {fileID: 3123206772296063255, guid: c9b365a95e15f08459615c22ce5c73be,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.835
-      objectReference: {fileID: 0}
     - target: {fileID: 166513299171790068, guid: c9b365a95e15f08459615c22ce5c73be,
         type: 3}
       propertyPath: m_Enabled
@@ -515,6 +496,25 @@ PrefabInstance:
     - target: {fileID: 23459370, guid: c9b365a95e15f08459615c22ce5c73be, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23459369, guid: c9b365a95e15f08459615c22ce5c73be, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3123206772296063255, guid: c9b365a95e15f08459615c22ce5c73be,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.411
+      objectReference: {fileID: 0}
+    - target: {fileID: 3123206772296063255, guid: c9b365a95e15f08459615c22ce5c73be,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.039
+      objectReference: {fileID: 0}
+    - target: {fileID: 3123206772296063255, guid: c9b365a95e15f08459615c22ce5c73be,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.835
       objectReference: {fileID: 0}
     - target: {fileID: 3856848806256653566, guid: c9b365a95e15f08459615c22ce5c73be,
         type: 3}

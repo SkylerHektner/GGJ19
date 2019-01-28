@@ -33,6 +33,7 @@ public class Fan : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            PlayerMovement.instance.SetJumpInWind();
             other.GetComponent<Rigidbody>().AddForce(transform.up * power, ForceMode.Acceleration);
         }
     }

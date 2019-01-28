@@ -14,6 +14,8 @@ public class Blueprint : MonoBehaviour
     private int itemsRemaining;
     private AudioSource buildSound;
 
+    private bool inPlace = false;
+
     public GameObject spawnPortalBackTrigger;
 
     void Start()
@@ -34,14 +36,17 @@ public class Blueprint : MonoBehaviour
             return;
         }
 
-        if (Input.GetButtonDown("Interact"))
+        if (inPlace)
         {
-            PlayerInventory inventory = player.GetComponent<PlayerInventory>();
-            itemsToBeShown[0].ShowItem();
-            inventory.RemoveFromInventory(itemsToBeShown[0].itemName);
-            itemsRemaining--;
-            itemsToBeShown.Remove(itemsToBeShown[0]);
-            buildSound.Play();
+            if (Input.GetButtonDown("Interact"))
+            {
+                PlayerInventory inventory = player.GetComponent<PlayerInventory>();
+                itemsToBeShown[0].ShowItem();
+                inventory.RemoveFromInventory(itemsToBeShown[0].itemName);
+                itemsRemaining--;
+                itemsToBeShown.Remove(itemsToBeShown[0]);
+                buildSound.Play();
+            }
         }
     }
 
@@ -49,6 +54,7 @@ public class Blueprint : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            inPlace = true;
             PlayerInventory inventory = other.GetComponent<PlayerInventory>();
             foreach (BlueprintItem bit in blueprintItems)
             {
@@ -66,6 +72,7 @@ public class Blueprint : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            inPlace = false;
             foreach (BlueprintItem bit in itemsToBeShown)
             {
                 bit.CancelHighlightItem();

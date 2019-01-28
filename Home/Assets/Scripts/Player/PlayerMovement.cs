@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 relativeVelocity;
 
     private bool dead = false;
+    private bool inHome = false;
 
     private Rigidbody rb;
     private AudioSource[] audios;
@@ -20,6 +21,9 @@ public class PlayerMovement : MonoBehaviour
     private AudioSource stepSound2;
     private AudioSource jumpSound;
     private AudioSource pickupSound;
+    private AudioSource lavaNoise;
+    private AudioSource lavaLevelBGM;
+    private AudioSource homeBGM;
 
     private float OriginalJumpHeight;
     private int jumpCounter = 0;
@@ -50,6 +54,10 @@ public class PlayerMovement : MonoBehaviour
         stepSound2 = audios[1];
         jumpSound = audios[2];
         pickupSound = audios[3];
+        
+        homeBGM = audios[4];
+        lavaNoise = audios[5];
+        lavaLevelBGM = audios[6];
         relativeVelocity = Vector3.zero;
     }
 
@@ -89,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
 
             // Reset Jump Counter if player hits the floor
             RaycastHit hitInfo;
-            if (Physics.Raycast(transform.position, Vector3.down, out hitInfo, minJumpThresh))
+            if (Physics.Raycast(transform.position, Vector3.down, out hitInfo, minJumpThresh, 2))
             {
                 if (!grounded)
                 {
@@ -140,6 +148,11 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
+    public void SetJumpInWind()
+    {
+        jumpCounter = 1;
+    }
+
     public void ChangeJumpHeight(float factor)
     {
         JumpHeight *= factor;
@@ -156,8 +169,59 @@ public class PlayerMovement : MonoBehaviour
         rb.isKinematic = !rb.isKinematic;
     }
 
+    public void SwitchBGM()
+    {
+        if (inHome)
+        {
+            PlayHomeBGM();
+            inHome = false;
+        }
+        else
+        {
+            inHome = true;
+            PlayLavaBGM();
+        }
+    }
+
     public void PlayPickUpSound()
     {
         pickupSound.Play();
+    }
+
+    public void PlayHomeBGM()
+    {
+        StartCoroutine(SoundFadeOut(lavaNoise, 1));
+        StartCoroutine(SoundFadeOut(lavaLevelBGM, 0.45f));
+        StartCoroutine(SoundFadeIn(homeBGM, 1));
+    }
+
+    public void PlayLavaBGM()
+    {
+        StartCoroutine(SoundFadeIn(lavaNoise, 1));
+        StartCoroutine(SoundFadeIn(lavaLevelBGM, 0.45f));
+        StartCoroutine(SoundFadeOut(homeBGM, 1));
+    }
+
+    static IEnumerator SoundFadeIn(AudioSource a, float highVolume)
+    {
+        a.volume = 0;
+        a.Play();
+        for (float f = 0; f <= highVolume; f += 1f / 20 * highVolume)
+        {
+            Debug.Log(f);
+            a.volume = f;
+            yield return null;
+        }
+        a.volume = highVolume;
+    }
+
+    static IEnumerator SoundFadeOut(AudioSource a, float highVolume)
+    {
+        for (float f = highVolume; f >= 0; f -= 1f / 20 * highVolume)
+        {
+            a.volume = f;
+            yield return null;
+        }
+        a.Stop();
     }
 }
