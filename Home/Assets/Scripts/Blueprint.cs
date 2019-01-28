@@ -40,12 +40,16 @@ public class Blueprint : MonoBehaviour
         {
             if (Input.GetButtonDown("Interact"))
             {
-                PlayerInventory inventory = player.GetComponent<PlayerInventory>();
-                itemsToBeShown[0].ShowItem();
-                inventory.RemoveFromInventory(itemsToBeShown[0].itemName);
-                itemsRemaining--;
-                itemsToBeShown.Remove(itemsToBeShown[0]);
-                buildSound.Play();
+                Debug.Log(itemsRemaining);
+                if (itemsRemaining > 0)
+                {
+                    PlayerInventory inventory = player.GetComponent<PlayerInventory>();
+                    itemsToBeShown[0].ShowItem();
+                    inventory.RemoveFromInventory(itemsToBeShown[0].itemName);
+                    itemsRemaining--;
+                    itemsToBeShown.Remove(itemsToBeShown[0]);
+                    buildSound.Play();
+                }
             }
         }
     }

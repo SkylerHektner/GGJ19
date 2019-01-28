@@ -56,8 +56,8 @@ public class PlayerMovement : MonoBehaviour
         jumpSound = audios[2];
         pickupSound = audios[3];
         homeBGM = audios[4];
-        lavaNoise = audios[5];
-        lavaLevelBGM = audios[6];
+        lavaNoise = audios[6];
+        lavaLevelBGM = audios[5];
         jumppadSound = audios[7];
         relativeVelocity = Vector3.zero;
     }
@@ -196,15 +196,15 @@ public class PlayerMovement : MonoBehaviour
     public void PlayHomeBGM()
     {
         StartCoroutine(SoundFadeOut(lavaNoise, 1));
-        StartCoroutine(SoundFadeOut(lavaLevelBGM, 0.45f));
-        StartCoroutine(SoundFadeIn(homeBGM, 1));
+        StartCoroutine(SoundFadeOut(lavaLevelBGM, 0.55f));
+        StartCoroutine(SoundFadeIn(homeBGM, 0.9f));
     }
 
     public void PlayLavaBGM()
     {
         StartCoroutine(SoundFadeIn(lavaNoise, 1));
-        StartCoroutine(SoundFadeIn(lavaLevelBGM, 0.45f));
-        StartCoroutine(SoundFadeOut(homeBGM, 1));
+        StartCoroutine(SoundFadeIn(lavaLevelBGM, 0.55f));
+        StartCoroutine(SoundFadeOut(homeBGM, 0.9f));
     }
 
     static IEnumerator SoundFadeIn(AudioSource a, float highVolume)
