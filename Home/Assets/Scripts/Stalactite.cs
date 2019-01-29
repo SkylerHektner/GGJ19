@@ -37,7 +37,7 @@ public class Stalactite : MonoBehaviour, ITriggerable
 
             // Scale the particles to the size of the stalactite.
             particles.parent = transform;
-            particles.localScale = Vector3.one;
+            particles.localScale = Vector3.one * 0.25f;
         }
     }
 }
