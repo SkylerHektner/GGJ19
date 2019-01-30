@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScreen1.unity
     guid: 5bbc235a04fa2df4cb47b345bc999ed3
   - enabled: 1
-    path: Assets/Scenes/LavaLevel.unity
+    path: Assets/Scenes/LavaLevel/LavaLevel.unity
     guid: 75a0f524930f48a4fb4292aa80bb7c93
   m_configObjects: {}
