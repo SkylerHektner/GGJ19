@@ -40,9 +40,9 @@ public class Blueprint : MonoBehaviour
         {
             if (Input.GetButtonDown("Interact"))
             {
-                if (itemsRemaining > 0)
+                if (inventory.Count > 0)
                 {
-                    PlayerInventory inventory = player.GetComponent<PlayerInventory>();
+                    // PlayerInventory inventory = player.GetComponent<PlayerInventory>();
                     itemsToBeShown[0].ShowItem();
                     inventory.RemoveFromInventory(itemsToBeShown[0].itemName);
                     itemsRemaining--;
