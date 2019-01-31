@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     private AudioSource lavaLevelBGM;
     private AudioSource homeBGM;
     private AudioSource jumppadSound;
+    private AudioSource waterudoing1;
+    private AudioSource waterudoing2;
 
     private float OriginalJumpHeight;
     private int jumpCounter = 0;
@@ -59,6 +61,8 @@ public class PlayerMovement : MonoBehaviour
         lavaNoise = audios[6];
         lavaLevelBGM = audios[5];
         jumppadSound = audios[7];
+        waterudoing1 = audios[8];
+        waterudoing2 = audios[9];
         relativeVelocity = Vector3.zero;
     }
 
@@ -90,8 +94,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (movement.magnitude > 0.5 && !stepSound1.isPlaying && !stepSound2.isPlaying)
                 {
-                    stepSound1.volume = Random.Range(0.05f, 0.07f);
-                    stepSound1.pitch = Random.Range(1.3f, 1.5f);
+                    stepSound1.volume = Random.Range(0.3f, 0.5f);
+                    stepSound1.pitch = Random.Range(1.5f, 1.7f);
                     stepSound1.Play();
                 }
             }
@@ -227,5 +231,18 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
         a.Stop();
+    }
+
+    public void PlayDeathSound()
+    {
+        int whichOne = Random.Range(0, 2);
+        if (whichOne == 0)
+        {
+            waterudoing1.Play();
+        }
+        else
+        {
+            waterudoing2.Play();
+        }
     }
 }
