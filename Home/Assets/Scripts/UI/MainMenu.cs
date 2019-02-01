@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class MainMenu : MonoBehaviour
 
 	#region Variables (private)
 
+	private Button playButton;
+	private Button quitButton;
+
 	#endregion
 
 	#region Getters_Setters
@@ -25,13 +29,27 @@ public class MainMenu : MonoBehaviour
 	// Use this for initialization
 	private void Start()
 	{
-	
+		playButton = transform.Find("PlayButton").GetComponent<Button>();
+		quitButton = transform.Find("QuitButton").GetComponent<Button>();
+
+		if(playButton == null)
+			Debug.Log("is null");
+
+		playButton.Select();
 	}
 
 	// Update is called once per frame
 	private void Update()
 	{
-	
+		if(Input.GetAxis("Vertical") > 0)
+		{
+			playButton.Select();
+		}
+		else if(Input.GetAxis("Vertical") < 0)
+		{
+			quitButton.Select();
+		}
+
 	}
 	#endregion
 

@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     private List<string> collectedItems = new List<string>(); // The items that are currently collected.
+
+    public int Count { get { return collectedItems.Count; } }
     
     public void AddToInventory(string key)
     {

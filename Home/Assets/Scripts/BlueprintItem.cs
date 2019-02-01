@@ -19,16 +19,19 @@ public class BlueprintItem : MonoBehaviour
 
     public void ShowItem()
     {
-        meshRenderer.material = normalMaterial;
+        if(meshRenderer != null)
+            meshRenderer.material = normalMaterial;
     }
 
     public void HighlightItem()
     {
-        meshRenderer.material = highlightMaterial;
+        if(meshRenderer != null)
+            meshRenderer.material = highlightMaterial;
     }
 
     public void CancelHighlightItem()
     {
-        meshRenderer.material = blueprintMaterial;
+        if(meshRenderer != null)
+            meshRenderer.material = blueprintMaterial;
     }
 }

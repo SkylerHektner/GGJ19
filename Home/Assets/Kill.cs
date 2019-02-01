@@ -8,6 +8,7 @@ public class Kill : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
+            PlayerMovement.instance.PlayDeathSound();
             GameManager.instance.PlayDeathTransition();
         }
     }

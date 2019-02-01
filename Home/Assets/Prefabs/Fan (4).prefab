@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1085256577}
   - component: {fileID: 1085256579}
   - component: {fileID: 1085256578}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 1649564365}
   - component: {fileID: 1649564364}
   - component: {fileID: 4712799046231927642}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fan (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 1953044859}
   - component: {fileID: 1953044861}
   - component: {fileID: 1953044860}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
